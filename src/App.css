@@ -75,3 +75,10 @@
 {
     font-size: 25px;
 }
+.title
+{
+  font-size: 30px;
+}
+.text-center{
+  border-top: 1px solid black;
+}

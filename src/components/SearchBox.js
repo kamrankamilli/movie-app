@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   Button,
   InputGroup,
@@ -20,6 +20,14 @@ function SearchBox(props) {
       </option>
     ));
   };
+  function handleSubmit(){ 
+     return props.onSubmit(searchValue, yearValue,typeValue)
+  }
+  const onKeyPress = (e) => {
+    if(e.which === 13) {
+      handleSubmit();
+    }
+  }
   return (
     <div>
       <Container>
@@ -27,6 +35,7 @@ function SearchBox(props) {
           <Col>
             <InputGroup className="mb-3">
               <FormControl
+                onKeyPress = {onKeyPress}
                 value={searchValue}
                 type="text"
                 name="searchValue"
@@ -56,7 +65,9 @@ function SearchBox(props) {
               </select>
               <InputGroup.Append>
                 <Button
-                  onClick={() => props.onSubmit(searchValue, yearValue,typeValue)}
+                
+                type="submit"
+                  onClick={handleSubmit}
                   variant="dark"
                 >
                   Search

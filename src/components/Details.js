@@ -1,7 +1,17 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import { Container, Row, Col, Badge } from "react-bootstrap";
-const Detail = ({ Title, Poster, imdbRating, Rated, Runtime, Genre, Plot, Actors, Director}) => {
+const Detail = ({
+  Title,
+  Poster,
+  imdbRating,
+  Rated,
+  Runtime,
+  Genre,
+  Plot,
+  Actors,
+  Director,
+}) => {
   return (
     <Container>
       <Row>
@@ -10,7 +20,7 @@ const Detail = ({ Title, Poster, imdbRating, Rated, Runtime, Genre, Plot, Actors
             style={{ width: "100%" }}
             src={
               Poster === "N/A"
-                ? "https://placehold.it/198x264&text=Image+Not+Found"
+                ? "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg "
                 : Poster
             }
             alt={Title}
@@ -18,8 +28,17 @@ const Detail = ({ Title, Poster, imdbRating, Rated, Runtime, Genre, Plot, Actors
         </Col>
       </Row>
       <Row>
-        <Col>
-          <h3>{Title}</h3>
+        <Col className="text-center" md={12}>
+          <p className="title">{Title}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col style={{ marginBottom: "20px" }}>
+          <h5>
+            <Badge>{Rated}</Badge>
+            <Badge>{Runtime}</Badge>
+            <Badge>{Genre}</Badge>
+          </h5>
         </Col>
         <Col style={{ textAlign: "right" }}>
           <h1>
@@ -29,21 +48,25 @@ const Detail = ({ Title, Poster, imdbRating, Rated, Runtime, Genre, Plot, Actors
           </h1>
         </Col>
       </Row>
-      <Row style={{ marginBottom: "20px" }}>
-        <Col>
-          <Badge>{Rated}</Badge>
-          <Badge>{Runtime}</Badge>
-          <Badge>{Genre}</Badge>
+      <Row>
+        <Col className="text-center" md={12}>
+          <h5>Directors</h5>
+          <p>{Director}</p>
         </Col>
       </Row>
       <Row>
-        <Col><h4>Directors:</h4><h5>{Director}</h5></Col>
+        <Col>
+          <h5 className="text-center" md={12}>
+            Actors
+          </h5>
+          <p>{Actors}</p>
+        </Col>
       </Row>
       <Row>
-        <Col><h4>Actors:</h4><h5>{Actors}</h5></Col>
-      </Row>
-      <Row>
-        <Col><h4>About:</h4><p>{Plot}</p></Col>
+        <Col className="text-center" md={12}>
+          <h4>About</h4>
+          <p>{Plot}</p>
+        </Col>
       </Row>
     </Container>
   );
