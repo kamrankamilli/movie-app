@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Container, Row, Col, Modal } from "react-bootstrap";
+import { Spinner, Row, Col, Modal } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import MovieCards from "./MovieCards";
 import Detail from "./Details";

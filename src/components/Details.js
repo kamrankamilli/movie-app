@@ -1,7 +1,6 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import MovieCards from "../components/MovieCards";
-import { Spinner, Container, Row, Col, Modal, Badge } from "react-bootstrap";
+import { Container, Row, Col, Badge } from "react-bootstrap";
 const Detail = ({ Title, Poster, imdbRating, Rated, Runtime, Genre, Plot, Actors, Director}) => {
   return (
     <Container>

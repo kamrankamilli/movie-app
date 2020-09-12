@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Row, Card, Badge } from "react-bootstrap";
-import Details from "./Details";
 const API_KEY = "ce428231";
 const MovieCards = ({
   Title,
@@ -8,7 +7,6 @@ const MovieCards = ({
   Poster,
   Year,
   Type,
-  imdbRating,
   ShowDetail,
   DetailRequest,
   ActivateModal,

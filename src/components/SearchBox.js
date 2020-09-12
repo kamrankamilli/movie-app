@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Movie from "./Movie";
+import React, { useState } from "react";
 import {
   Button,
   InputGroup,
