@@ -55,7 +55,7 @@ function SearchBox(props) {
                 value={typeValue}
                 onChange={(e) => setTypeValue(e.target.value)}
               >
-                <option id="type" value="" selected>Year</option>
+                <option id="type" value="" selected>Type</option>
                 <option  value=""></option>
                 <option value="movie">Movie</option>
                 <option value="series">Series</option>
