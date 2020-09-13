@@ -19,7 +19,10 @@ function SearchBox(props) {
         {year - i}
       </option>
     ));
-  };
+  }
+  const nonEmpty = searchValue.length > 0;
+
+
   function handleSubmit(){ 
      return props.onSubmit(searchValue, yearValue,typeValue)
   }
@@ -65,7 +68,7 @@ function SearchBox(props) {
               </select>
               <InputGroup.Append>
                 <Button
-                
+                disabled={!nonEmpty}
                 type="submit"
                   onClick={handleSubmit}
                   variant="dark"
