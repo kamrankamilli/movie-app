@@ -9,8 +9,7 @@ const MovieCards = ({
   Type,
   ShowDetail,
   DetailRequest,
-  ActivateModal,
-  data
+  ActivateModal
 }) => {
   const clickHandler = () => {
     // Display Modal and Loading Icon

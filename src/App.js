@@ -1,13 +1,11 @@
-import React from 'react';
-import './App.css';
-import Movie from './components/Movie'
-
-
+import React from "react";
+import "./App.css";
+import ToggleBox from "./components/ToggleButton";
 
 function App() {
   return (
     <div className="App">
-       <Movie/>
+      <ToggleBox/>
     </div>
   );
 }

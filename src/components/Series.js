@@ -1,39 +1,57 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Row, Col, Modal } from "react-bootstrap";
+import {
+  Modal,
+  Spinner,
+  Row,
+  Col,
+} from "react-bootstrap";
 import SearchBox from "./SearchBox";
-import MovieCards from "./MovieCards";
-import Detail from "./Details";
-import Footer from "./Footer";
-
+import MovieCards from "./MovieCards.js";
+import Footer from "./Footer"
+import Detail from "./Details"
 const API_KEY = "ce428231";
-
-function Movie() {
+function Series() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [q, setQuery] = useState("Avengers");
+  const [q, setQuery] = useState("Game");
   const [activateModal, setActivateModal] = useState(false);
   const [detail, setShowDetail] = useState(false);
   const [detailRequest, setDetailRequest] = useState(false);
   const [year, setYear] = useState("");
-  const [type, setType] = useState("");
-  const handleSubmit = (searchValue, yearValue,typeValue) => {
+  // const [type, setType] = useState("");
+  const [season, setSeason] = useState("1");
+  const [episode, setEpisode] = useState("");
+  const handleSubmit = (
+    searchValue,
+    yearValue,
+    typeValue,  
+    seasonValue,
+    episodeValue
+  ) => {
     setQuery(searchValue);
     setYear(yearValue);
-    setType(typeValue);
+    // setType(typeValue);
+    setSeason(seasonValue);
+    setEpisode(episodeValue);
   };
   useEffect(() => {
     setLoading(true);
     setError(null);
     setData(null);
-    fetch(`http://www.omdbapi.com/?y=${year}&apikey=${API_KEY}&s=${q}&type=${type}`)
+    fetch(
+      `http://www.omdbapi.com/?apikey=${API_KEY}&t=${q}&Season=${season}&y=${year}`
+    )
       .then((resp) => resp)
       .then((resp) => resp.json())
       .then((response) => {
         if (response.Response === "False") {
           setError(response.Error);
         } else {
-          setData(response.Search);
+          setData(response.Episodes);
+          console.log(data);
+          console.log(episode);
+          console.log(season);
         }
         setLoading(false);
       })
@@ -41,16 +59,15 @@ function Movie() {
         setError(message);
         setLoading(false);
       });
-  }, [q,year,type]);
-  return (
-    <div>
-      <div className="maincontainer">
-        <Row>
-          <Col>
-            <SearchBox onSubmit={handleSubmit} />
-          </Col>
-        </Row>
-        <br />
+  }, [q, year,season,episode]);
+  return(
+  <div>
+    <div className="maincontainer">
+      <Row>
+        <Col>
+          <SearchBox onSubmit={handleSubmit}/>
+        </Col>
+      </Row>
         <Row>
           {loading && <Spinner className="spinner" animation="grow" />}
 
@@ -69,6 +86,7 @@ function Movie() {
             ))}
         </Row>
       </div>
+      
       <Modal
         title="Detail"
         centered
@@ -79,6 +97,6 @@ function Movie() {
       </Modal>
       <Footer/>
     </div>
-  );
+      );
 }
-export default Movie;
+export default Series;
